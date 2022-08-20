@@ -13,8 +13,8 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
@@ -60,7 +60,7 @@ public class BuilderStaffItem extends Item {
     @Environment(EnvType.CLIENT)
     public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
-        tooltip.add(new TranslatableText("staffofbuilding.placement_range", size).formatted(Formatting.GRAY));
+        tooltip.add( Text.translatable("staffofbuilding.placement_range").formatted(Formatting.GRAY));
     }
 
     @Override
@@ -142,4 +142,10 @@ public class BuilderStaffItem extends Item {
     public int getMaxSize() {
         return size;
     }
+
+    public MutableText literal(String text) {
+        return  Text.translatable(text);
+    }
 }
+
+
